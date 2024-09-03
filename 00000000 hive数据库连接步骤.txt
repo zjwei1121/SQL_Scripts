@@ -1,0 +1,28 @@
+
+0. 登录海牛实验室
+1. 启动hadoop实验环境
+2. 安装hive
+
+# 解压缩hive
+tar -zxvf /public/software/bigdata/apache-hive-3.1.3-bin.tar.gz -C /usr/local/
+
+# 重命名安装文件夹
+mv /usr/local/apache-hive-3.1.3-bin/ /usr/local/hive-3.1.3
+
+# 添加环境变量
+echo export HIVE_HOME=/usr/local/hive-3.1.3 >> /etc/profile
+echo export PATH=$PATH:$HIVE_HOME/bin >> /etc/profile
+
+# 环境变量生效
+source /etc/profile
+
+# 直接初始化元数据库会报错，删除低版本guava文件
+rm -f /usr/local/hive-3.1.3/lib/guava-19.0.jar
+# 并把高版本文件复制到hive文件夹
+cp /usr/local/hadoop-3.1.4/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/hive-3.1.3/lib/
+
+# 初始化元数据库
+/usr/local/hive-3.1.3/bin/schematool -dbType derby -initSchema
+
+# 直接在命令行输入hive即可
+hive
