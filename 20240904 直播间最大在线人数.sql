@@ -88,6 +88,7 @@ select unix_timestamp('11:24:00', 'HH:mm:ss');      -- 41040
 select from_unixtime(40980);                        -- 1970-01-01 11:23:00
 select from_unixtime(40980, 'yyyy-MM-dd HH:mm')     -- 1970-01-01 11:23
 -- 如果拿到的时间戳是13位的，则可能是存储了毫秒为单位的时间戳，需要除以1000再进行转化
+-- reference: https://blog.csdn.net/HappyRocking/article/details/80854778
 
 -- output:
 -- A       4       2019-9-4 11:23:00       2019-9-4 11:30:00       1567596180      1567596600      7
