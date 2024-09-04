@@ -1,6 +1,7 @@
 
--- mysql
+-- hadoop 3.1.4 + hive 3.1.3
 
+-- 准备样例数据
 create table base (
     num int,
     freq int
